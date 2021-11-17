@@ -1,12 +1,11 @@
 # otp-gen-agent
 A nanoid based otp generator
 
-[![https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/otp-gen-agent)
+[![NPM][npm-img]][npm-url]
 
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
-
-
+[![contributions welcome][contribution-img]][contribution-url]
+[![npm version][npm-version-img]][npm-version-url]
 
 
 ## Install
@@ -59,3 +58,9 @@ Useful in cases where number of OTPs to be generated is known before hand
 
 
 [license-url]: LICENSE
+[npm-img]: https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true
+[npm-url]: https://www.npmjs.com/package/otp-gen-agent
+[npm-version-img]: https://badge.fury.io/js/otp-gen-agent.svg
+[npm-version-url]: http://badge.fury.io/js/otp-gen-agent
+[contribution-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
+[contribution-url]: https://github.com/dwyl/esta/issues
