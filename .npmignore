@@ -1,0 +1,9 @@
+tsd.json
+.gitignore
+.gitattributes
+node_modules/
+typings/
+.vscode/
+jsconfig.json
+coverage/
+test/

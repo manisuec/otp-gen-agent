@@ -1,0 +1,27 @@
+{
+  "name": "otp-gen",
+  "version": "1.0.0",
+  "description": "A nanoid based otp generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/_mocha test/*test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manisuec/otp-gen.git"
+  },
+  "keywords": [
+    "otp",
+    "nanoid"
+  ],
+  "author": "Manish Prasad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manisuec/otp-gen/issues"
+  },
+  "homepage": "https://github.com/manisuec/otp-gen#readme",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3"
+  }
+}
