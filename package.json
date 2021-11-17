@@ -1,0 +1,23 @@
+{
+  "name": "otp-gen",
+  "version": "1.0.0",
+  "description": "A nanoid based otp generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manisuec/otp-gen.git"
+  },
+  "keywords": [
+    "otp",
+    "nanoid"
+  ],
+  "author": "Manish Prasad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manisuec/otp-gen/issues"
+  },
+  "homepage": "https://github.com/manisuec/otp-gen#readme"
+}
