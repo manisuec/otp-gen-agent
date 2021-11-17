@@ -1,5 +1,5 @@
 {
-  "name": "otp-gen",
+  "name": "otp-gen-agent",
   "version": "1.0.0",
   "description": "A nanoid based otp generator",
   "main": "index.js",
