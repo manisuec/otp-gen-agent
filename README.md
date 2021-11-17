@@ -2,6 +2,7 @@
 A nanoid based otp generator
 
 [![https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/otp-gen-agent)
+
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 
