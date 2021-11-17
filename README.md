@@ -44,3 +44,10 @@ Useful in cases where number of OTPs to be generated is known before hand
 ## Test
 
 `npm run test`
+
+## License
+[MIT][license-url]
+
+
+
+[license-url]: LICENSE
