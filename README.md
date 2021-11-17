@@ -1,6 +1,9 @@
 # otp-gen-agent
 A nanoid based otp generator
 
+[![https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/otp-gen-agent)
+
+
 ## Install
 `npm install otp-gen-agent --save`
 
