@@ -44,9 +44,25 @@ describe('Otp Generator Test Suite', () => {
     }
   });
 
+  it('should throw error if length is not a number', async () => {
+    try {
+      const id = await customOtpGen({length: 'abc'});
+    } catch (err) {
+      expect(err).to.be.an.instanceof(Error);
+    }
+  });
+
   it('should throw error if bulk number is <= 0', async () => {
     try {
       const id = await bulkOtpGen(0);
+    } catch (err) {
+      expect(err).to.be.an.instanceof(Error);
+    }
+  });
+
+  it('should throw error if bulk number is not a number', async () => {
+    try {
+      const id = await bulkOtpGen('0');
     } catch (err) {
       expect(err).to.be.an.instanceof(Error);
     }
