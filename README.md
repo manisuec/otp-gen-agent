@@ -7,7 +7,7 @@ A nanoid based otp generator
 [![contributions welcome][contribution-img]][contribution-url]
 [![npm version][npm-version-img]][npm-version-url]
 [![codecov][codecov-img]][codecov-url]
-![NPM](https://img.shields.io/npm/l/otp-gen-agent)
+![License](https://img.shields.io/npm/l/otp-gen-agent)
 
 
 ## Install
