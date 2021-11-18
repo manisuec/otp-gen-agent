@@ -16,7 +16,7 @@ A nanoid based otp generator
 Mobile number has become the defacto user authentication mechanism in India and hence, OTP generation is a very common phenomena.
 This is a small utility lib to generate OTP. 
 ### default
-```
+```js
 const { otpGen } = require('otp-gen-agent');
 
 const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
@@ -25,14 +25,14 @@ const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
 
 ### custom otp generator
 
-```
+```js
 const { customOtpGen } = require('otp-gen-agent');
 
 const otp = await customOtpGen({length: 4, chars: 'abc123}); // 'a3c1'
 
 ```
 
-Arguments: 
+**Arguments:** 
   - options: optional
     - length: custom length
     - chars: custom characters
@@ -42,15 +42,15 @@ You can customise the OTP length and also the characters to be used for OTP gene
   - Default characters used to generate OTP is 0123456789
 ### bulk otp generator
 
-```
+```js
 const { bulkOtpGen } = require('otp-gen-agent');
 
 const otp = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
 
 ```
 
-Arguments: 
-  - num: num of otps to be generated
+**Arguments:** 
+  - num: number of OTPs to be generated in bulk
 
 Useful in cases where number of OTPs to be generated is known before hand
 ## Test
