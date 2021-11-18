@@ -6,6 +6,7 @@ A nanoid based otp generator
 
 [![contributions welcome][contribution-img]][contribution-url]
 [![npm version][npm-version-img]][npm-version-url]
+![License][license-url]
 
 
 ## Install
@@ -69,3 +70,4 @@ Useful in cases where number of OTPs to be generated is known before hand
 [npm-version-url]: http://badge.fury.io/js/otp-gen-agent
 [contribution-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
 [contribution-url]: https://github.com/dwyl/esta/issues
+[license-url]: https://img.shields.io/npm/l/otp-gen-agent

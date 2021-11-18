@@ -8,7 +8,7 @@ const nid = customAlphabet(ITEM_ALPHABET, OTP_LENGTH);
 const otpGen = async () => await nid();
 
 const customOtpGen = async ( { length = OTP_LENGTH, chars =  ITEM_ALPHABET}) => {
-  if (Number.isNaN(length) || !length > 0) {
+  if (!Number.isInteger(length) || !length > 0) {
     throw new Error('otp length must be greater than 0');
   }
 
@@ -18,7 +18,7 @@ const customOtpGen = async ( { length = OTP_LENGTH, chars =  ITEM_ALPHABET}) => 
 }
 
 const bulkOtpGen = async (num = 0) => {
-  if (Number.isNaN(num) || !num > 0) {
+  if (!Number.isInteger(num) || !num > 0) {
     throw new Error('num must be greater than 0');
   }
 

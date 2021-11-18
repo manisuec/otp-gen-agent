@@ -1,0 +1,30 @@
+name: run test on pr
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: installing node modules
+        run: npm i -f || npm i -f || npm i -f
+
+      - name: run tests
+        run: npm run test
+
+      - name: upload code coverage
+        uses: codecov/codecov-action@v2
