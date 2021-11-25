@@ -1,5 +1,5 @@
 # otp-gen-agent
-A nanoid based otp generator
+A [nanoid](https://github.com/ai/nanoid#readme) based one time password (otp) generator.
 
 [![NPM][npm-img]][npm-url]
 
@@ -9,7 +9,7 @@ A nanoid based otp generator
 ![License](https://img.shields.io/npm/l/otp-gen-agent)
 
 
-## Install
+## Installation
 `npm install otp-gen-agent --save`
 
 ## Usage
@@ -23,6 +23,8 @@ const { otpGen } = require('otp-gen-agent');
 const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
 
 ```
+  - Default OTP lenght is 6
+  - Default characters used to generate OTP is 0123456789
 
 ### custom otp generator
 
@@ -53,7 +55,7 @@ const otp = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
 **Arguments:** 
   - num: number of OTPs to be generated in bulk
 
-Useful in cases where number of OTPs to be generated is known before hand
+Useful in cases where number of OTPs to be generated is known before hand.
 ## Test
 
 `npm run test`
