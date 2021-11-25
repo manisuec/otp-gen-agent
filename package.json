@@ -1,6 +1,6 @@
 {
   "name": "otp-gen-agent",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A nanoid based OTP generator",
   "main": "index.js",
   "scripts": {
