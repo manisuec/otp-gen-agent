@@ -1,3 +1,9 @@
+<!--
+  Title: OTP Generator Agent
+  Description: A small utility library for generating OTP using nanoid
+  Author: manisuec
+  -->
+
 # otp-gen-agent
 A [nanoid](https://github.com/ai/nanoid#readme) based one time password (otp) generator.
 
