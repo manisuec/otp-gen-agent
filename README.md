@@ -31,13 +31,13 @@ const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
 ```js
 const { customOtpGen } = require('otp-gen-agent');
 
-const otp = await customOtpGen({length: 4, chars: 'abc123}); // 'a3c1'
+const otp = await customOtpGen({length: 4, chars: 'abc123'}); // 'a3c1'
 
 ```
 
 **Arguments:** 
   - options: optional
-    - length: custom length
+    - length: custom otp length
     - chars: custom characters
 
 You can customise the OTP length and also the characters to be used for OTP generation.
@@ -54,6 +54,9 @@ const otp = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
 
 **Arguments:** 
   - num: number of OTPs to be generated in bulk
+  - opts: optional argument
+    - length: custom otp length
+    - chars: custom characters
 
 Useful in cases where number of OTPs to be generated is known before hand.
 ## Test

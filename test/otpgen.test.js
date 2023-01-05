@@ -36,6 +36,30 @@ describe('Otp Generator Test Suite', () => {
     expect(ids).to.have.lengthOf(length);
   });
 
+  it('should generate otp in bulk with custom char', async () => {
+    const length = 25;
+    const ids = await bulkOtpGen(length, {chars: '1234@abcd'});
+
+    expect(ids).to.be.an('array');
+    expect(ids).to.have.lengthOf(length);
+  });
+
+  it('should generate otp in bulk with custom length', async () => {
+    const length = 25;
+    const ids = await bulkOtpGen(length, {length: 5});
+
+    expect(ids).to.be.an('array');
+    expect(ids).to.have.lengthOf(length);
+  });
+
+  it('should generate otp in bulk with custom chars and length', async () => {
+    const length = 25;
+    const ids = await bulkOtpGen(length, {chars: 'abcd123', length: 5});
+
+    expect(ids).to.be.an('array');
+    expect(ids).to.have.lengthOf(length);
+  });
+
   it('should throw error if length is < 0', async () => {
     try {
       const id = await customOtpGen({length: -1});
