@@ -52,6 +52,13 @@ const otp = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
 
 ```
 
+```js
+const { bulkOtpGen } = require('otp-gen-agent');
+
+const otp = await bulkOtpGen(2, {length = 5, chars: 'abcd123'} ); // Array of otps: ['312b3', 'bcddd']
+
+```
+
 **Arguments:** 
   - num: number of OTPs to be generated in bulk
   - opts: optional argument
