@@ -62,8 +62,8 @@ const otp = await bulkOtpGen(2, {length = 5, chars: 'abcd123'} ); // Array of ot
 **Arguments:** 
   - num: number of OTPs to be generated in bulk
   - opts: optional argument
-    - length: custom otp length
-    - chars: custom characters
+    - length: custom otp length (default: 6)
+    - chars: custom characters (default: 0123456789)
 
 Useful in cases where number of OTPs to be generated is known before hand.
 ## Test
