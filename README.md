@@ -80,7 +80,6 @@ Useful in cases where number of OTPs to be generated is known before hand.
 [MIT][license-url]
 
 
-
 [license-url]: LICENSE
 [npm-img]: https://nodei.co/npm/otp-gen-agent.png?downloads=true&downloadRank=true&stars=true
 [npm-url]: https://www.npmjs.com/package/otp-gen-agent
@@ -88,3 +87,7 @@ Useful in cases where number of OTPs to be generated is known before hand.
 [npm-version-url]: http://badge.fury.io/js/otp-gen-agent
 [contribution-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
 [contribution-url]: https://github.com/dwyl/esta/issues
+
+<a href="https://www.buymeacoffee.com/manisuec" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a> 
+
+> If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
