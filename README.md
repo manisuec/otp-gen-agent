@@ -5,7 +5,7 @@
   -->
 
 # otp-gen-agent
-A [nanoid](https://github.com/ai/nanoid#readme) based one time password (otp) generator.
+A small and secure one time password (otp) generator for Javascript based on [nanoid](https://github.com/ai/nanoid#readme).
 
 [![NPM][npm-img]][npm-url]
 
