@@ -1,7 +1,7 @@
 {
   "name": "otp-gen-agent",
-  "version": "1.1.1",
-  "description": "A nanoid based OTP generator",
+  "version": "1.1.2",
+  "description": "A small and secure one time password (otp) generator for Javascript based on nanoid",
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=lcov node_modules/mocha/bin/_mocha test/*test.js"
