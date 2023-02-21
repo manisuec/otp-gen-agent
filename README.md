@@ -9,11 +9,12 @@ A small and secure one time password (otp) generator for Javascript based on [na
 
 [![NPM][npm-img]][npm-url]
 
-
 [![contributions welcome][contribution-img]][contribution-url]
 [![npm version][npm-version-img]][npm-version-url]
 ![License](https://img.shields.io/npm/l/otp-gen-agent)
 
+> <a href="https://www.buymeacoffee.com/manisuec" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="52" width="200"></a> <br/>
+> If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
 
 ## Installation
 `npm install otp-gen-agent --save`
@@ -88,6 +89,6 @@ Useful in cases where number of OTPs to be generated is known before hand.
 [contribution-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
 [contribution-url]: https://github.com/dwyl/esta/issues
 
-<a href="https://www.buymeacoffee.com/manisuec" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a> 
+<a href="https://www.buymeacoffee.com/manisuec" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 > If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
