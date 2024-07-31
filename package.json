@@ -1,6 +1,6 @@
 {
   "name": "otp-gen-agent",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A small and secure one time password (otp) generator for Javascript based on nanoid",
   "main": "index.js",
   "scripts": {
