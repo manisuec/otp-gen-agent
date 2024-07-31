@@ -93,5 +93,5 @@ Useful in cases where number of OTPs to be generated is known before hand.
 
 > If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
 
-## About Me
-Read my blog at [Tech Insights](https://techinsights.manisuec.com)
+## Tech Blog
+Read my blog at [Tech Insights: Personal Tech Blog](https://techinsights.manisuec.com)
