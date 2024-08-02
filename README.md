@@ -77,6 +77,10 @@ Useful in cases where number of OTPs to be generated is known before hand.
 
 `npm run test`
 
+## Read More
+
+Read more in detail at [A One Time Password (OTP) generator](https://techinsights.manisuec.com/nodejs/otp-generator-nodejs/)
+
 ## License
 [MIT][license-url]
 
