@@ -4,7 +4,7 @@
   Author: manisuec
   -->
 
-# otp-gen-agent
+# otp-gen-agent: Secure One-Time Password Generation for Node.js
 A small and secure one time password (otp) generator for Javascript based on [nanoid](https://github.com/ai/nanoid#readme).
 
 [![NPM][npm-img]][npm-url]
@@ -16,24 +16,43 @@ A small and secure one time password (otp) generator for Javascript based on [na
 > <a href="https://www.buymeacoffee.com/manisuec" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="52" width="200"></a> <br/>
 > If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
 
+
+## What is OTP-Gen-Agent?
+
+`otp-gen-agent` is a lightweight, flexible Node.js library designed to simplify one-time password (OTP) generation for authentication systems. With mobile number verification becoming the standard authentication method across India and many other regions, this utility provides developers with reliable OTP generation capabilities.
+
 ## Installation
 `npm install otp-gen-agent --save`
+
+## Core Features
+
+- **Simple API**: Generate secure OTPs with minimal code
+- **Customizable**: Control OTP length and character set
+- **Bulk Generation**: Create multiple OTPs in a single operation
+- **Lightweight**: No bloated dependencies
+- **Promise-based**: Modern async/await support
 
 ## Usage
 
 Mobile number has become the defacto user authentication mechanism in India and hence, OTP generation is a very common phenomena.
-This is a small utility lib to generate OTP. 
-### default
+This is a small utility lib to generate OTP.
+
+### Standard OTP Generation
+
+Generate a standard 6-digit numeric OTP:
+
 ```js
 const { otpGen } = require('otp-gen-agent');
 
 const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
 
 ```
-  - Default OTP lenght is 6
-  - Default characters used to generate OTP is 0123456789
+  - Default OTP lenght: 6
+  - Default characters set: 0123456789 (Numeric [0-9])
 
-### custom otp generator
+### Custom OTP Generation
+
+Create OTPs with custom length and character sets:
 
 ```js
 const { customOtpGen } = require('otp-gen-agent');
@@ -50,7 +69,10 @@ const otp = await customOtpGen({length: 4, chars: 'abc123'}); // 'a3c1'
 You can customise the OTP length and also the characters to be used for OTP generation.
   - Default OTP lenght is 6.
   - Default characters used to generate OTP is 0123456789
-### bulk otp generator
+
+### Bulk OTP Generation
+
+Generate multiple OTPs in a single operation:
 
 ```js
 const { bulkOtpGen } = require('otp-gen-agent');
@@ -72,7 +94,14 @@ const otp = await bulkOtpGen(2, {length = 5, chars: 'abcd123'} ); // Array of ot
     - length: custom otp length (default: 6)
     - chars: custom characters (default: 0123456789)
 
-Useful in cases where number of OTPs to be generated is known before hand.
+### When to Use Bulk Generation
+
+The bulk generation feature is particularly useful when:
+
+- Pre-generating OTPs for upcoming authentication requests
+- Testing authentication systems with multiple users
+- Creating backup validation codes
+
 ## Test
 
 `npm run test`
