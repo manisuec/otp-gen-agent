@@ -106,11 +106,14 @@ The bulk generation feature is particularly useful when:
 
 `npm run test`
 
-## Read More
+## Learn More
 
-Read more in detail at [A One Time Password (OTP) generator](https://techinsights.manisuec.com/nodejs/otp-generator-nodejs/)
+For detailed documentation and implementation examples, read our comprehensive guide on [A One Time Password (OTP) generator](https://techinsights.manisuec.com/nodejs/otp-generator-nodejs/)
 
 ## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
 [MIT][license-url]
 
 
@@ -127,4 +130,4 @@ Read more in detail at [A One Time Password (OTP) generator](https://techinsight
 > If you find this utility library useful, you can [buy me a coffee](https://www.buymeacoffee.com/manisuec) to keep me energized for creating libraries like this.
 
 ## Tech Blog
-Read my blog at [Tech Insights: Personal Tech Blog](https://techinsights.manisuec.com)
+Read my personal blog on various tech topics at [Tech Insights: Personal Tech Blog](https://techinsights.manisuec.com)
