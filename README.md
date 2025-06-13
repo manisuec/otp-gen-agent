@@ -4,7 +4,7 @@
   Author: manisuec
   -->
 
-# otp-gen-agent: Secure One-Time Password Generation for Node.js
+# otp-gen-agent: Secure One-Time Password Generation for Nodejs
 A small and secure one time password (otp) generator for Javascript based on [nanoid](https://github.com/ai/nanoid#readme).
 
 [![NPM][npm-img]][npm-url]
@@ -31,6 +31,7 @@ A small and secure one time password (otp) generator for Javascript based on [na
 - **Bulk Generation**: Create multiple OTPs in a single operation
 - **Lightweight**: No bloated dependencies
 - **Promise-based**: Modern async/await support
+- **Webhook Support**: Trigger webhooks for OTP generation events
 
 ## Usage
 
@@ -101,6 +102,45 @@ The bulk generation feature is particularly useful when:
 - Pre-generating OTPs for upcoming authentication requests
 - Testing authentication systems with multiple users
 - Creating backup validation codes
+
+### Webhook Support
+
+The library provides webhook support to track OTP generation events. You can set up a webhook handler to receive notifications when OTPs are generated:
+
+```js
+const { otpGen, bulkOtpGen, setWebhookHandler, WEBHOOK_EVENTS } = require('otp-gen-agent');
+
+// custom webhook handler function
+const webHookHandler = async (event, data) => {
+  switch (event) {
+    case WEBHOOK_EVENTS.OTP_GENERATED:
+      console.log('Single OTP generated:', data.otp);
+      break;
+    case WEBHOOK_EVENTS.OTP_BULK_GENERATED:
+      console.log(`Generated ${data.count} OTPs:`, data.otps);
+      break;
+  }
+};
+
+// Set up webhook handler
+setWebhookHandler(webHookHandler);
+
+// Generate OTPs - webhook will be triggered automatically
+const otp = await otpGen(); // Triggers OTP_GENERATED event
+const bulkOtps = await bulkOtpGen(3); // Triggers OTP_BULK_GENERATED event
+```
+
+**Webhook Events:**
+- `otp-generated`: Triggered when a single OTP is generated
+  - Payload: `{ otp: string }`
+- `bulk-otp-generated`: Triggered when multiple OTPs are generated
+  - Payload: `{ count: number, otps: string[] }`
+
+**Features:**
+- Automatic webhook triggering for all OTP generation methods
+- Error handling for webhook failures
+- Type-safe event handling
+- Customizable webhook handler implementation
 
 ## Test
 

@@ -1,6 +1,15 @@
+const chai = require('chai');
 const expect = require('chai').expect;
+const chaiString = require('chai-string');
+chai.use(chaiString);
 
-const { otpGen, customOtpGen, bulkOtpGen } = require('../index');
+const { 
+  otpGen, 
+  customOtpGen, 
+  bulkOtpGen, 
+  setWebhookHandler,
+  WEBHOOK_EVENTS 
+} = require('../index');
 
 describe('Otp Generator Test Suite', () => {
   it('should generate otp of default length 6', async () => {
@@ -90,5 +99,48 @@ describe('Otp Generator Test Suite', () => {
     } catch (err) {
       expect(err).to.be.an.instanceof(Error);
     }
+  });
+
+  describe('Webhook Tests', () => {
+    let webhookEvents = [];
+    let webhookData = [];
+
+    beforeEach(() => {
+      webhookEvents = [];
+      webhookData = [];
+
+      setWebhookHandler((event, data) => {
+        webhookEvents.push(event);
+        webhookData.push(data);
+      });
+    });
+
+    it('should trigger webhook for single OTP generation', async () => {
+      await otpGen();
+      expect(webhookEvents).to.include(WEBHOOK_EVENTS.OTP_GENERATED);
+      expect(webhookData[0]).to.have.property('otp');
+    });
+
+    it('should trigger webhook for bulk OTP generation', async () => {
+      const length = 3;
+      await bulkOtpGen(length);
+      expect(webhookEvents).to.include(WEBHOOK_EVENTS.OTP_BULK_GENERATED);
+      expect(webhookData[0]).to.have.property('count', length);
+      expect(webhookData[0]).to.have.property('otps').that.is.an('array');
+      expect(webhookData[0].otps).to.have.lengthOf(length);
+    });
+
+    it('should handle webhook handler errors gracefully', async () => {
+      setWebhookHandler(() => {
+        throw new Error('Webhook error');
+      });
+      const id = await otpGen();
+      expect(id).to.be.a('string');
+      expect(id).to.have.lengthOf(6);
+    });
+
+    it('should throw error for invalid webhook handler', () => {
+      expect(() => setWebhookHandler('not-a-function')).to.throw(Error);
+    });
   });
 });

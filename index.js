@@ -1,35 +1,69 @@
 const nanoid = require('nanoid/async');
 
-const { ITEM_ALPHABET, OTP_LENGTH, BATCH_SIZE } = require('./constants');
+const { 
+  ITEM_ALPHABET, 
+  OTP_LENGTH, 
+  BATCH_SIZE,
+  WEBHOOK_EVENTS 
+} = require('./constants');
 
 const { customAlphabet } = nanoid;
 const nid = customAlphabet(ITEM_ALPHABET, OTP_LENGTH);
 
-const otpGen = async () => await nid();
+// Webhook handler
+let webhookHandler = null;
 
-const customOtpGen = async ( { length = OTP_LENGTH, chars =  ITEM_ALPHABET }) => {
+const setWebhookHandler = (handler) => {
+  if (typeof handler !== 'function') {
+    throw new Error('Webhook handler must be a function');
+  }
+  webhookHandler = handler;
+};
+
+const triggerWebhook = async (event, data) => {
+  if (webhookHandler) {
+    try {
+      await webhookHandler(event, data);
+    } catch (error) {
+      console.error('Webhook handler error:', error);
+    }
+  }
+};
+
+const otpGen = async (opts = {}) => {
+  const otp = await nid();
+  
+  await triggerWebhook(WEBHOOK_EVENTS.OTP_GENERATED, { otp });
+  return otp;
+};
+
+const customOtpGen = async ({ length = OTP_LENGTH, chars = ITEM_ALPHABET }) => {
   if (!Number.isInteger(length) || !length > 0) {
     throw new Error('otp length must be greater than 0');
   }
 
   const idGen = customAlphabet(chars, length);
+  const otp = await idGen();
 
-  return idGen();
-}
+  await triggerWebhook(WEBHOOK_EVENTS.OTP_GENERATED, { otp });
+  return otp;
+};
 
 const bulkOtpGen = async (num = 0, opts = {}) => {
   if (!Number.isInteger(num) || !num > 0) {
     throw new Error('num must be greater than 0');
   }
 
-  const { length = OTP_LENGTH, chars =  ITEM_ALPHABET } = opts;
+  const {
+    length = OTP_LENGTH, 
+    chars = ITEM_ALPHABET
+  } = opts;
 
   if (!Number.isInteger(length) || !length > 0) {
     throw new Error('otp length must be greater than 0');
   }
 
   const idGen = customAlphabet(chars, length);
-
   let promiseArr = [];
   const idArr = [];
 
@@ -46,16 +80,18 @@ const bulkOtpGen = async (num = 0, opts = {}) => {
 
   if (promiseArr.length !== 0) {
     let ids = await Promise.all(promiseArr);
-
+    
     idArr.push(...ids);   
   }
 
+  await triggerWebhook(WEBHOOK_EVENTS.OTP_BULK_GENERATED, { count: num, otps: idArr });
   return idArr;
 };
-
 
 module.exports = {
   otpGen,
   customOtpGen,
-  bulkOtpGen
+  bulkOtpGen,
+  setWebhookHandler,
+  WEBHOOK_EVENTS
 };
