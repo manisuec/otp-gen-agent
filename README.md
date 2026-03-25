@@ -4,8 +4,8 @@
   Author: manisuec
   -->
 
-# otp-gen-agent: Secure One-Time Password Generation for Nodejs
-A small and secure one time password (otp) generator for Javascript based on [nanoid](https://github.com/ai/nanoid#readme).
+# otp-gen-agent: Secure One-Time Password Generation for Node.js
+A small and secure one time password (otp) generator for Node.js with TypeScript support, based on [nanoid](https://github.com/ai/nanoid#readme).
 
 [![NPM][npm-img]][npm-url]
 
@@ -19,81 +19,82 @@ A small and secure one time password (otp) generator for Javascript based on [na
 
 ## What is OTP-Gen-Agent?
 
-`otp-gen-agent` is a lightweight, flexible Node.js library designed to simplify one-time password (OTP) generation for authentication systems. With mobile number verification becoming the standard authentication method across India and many other regions, this utility provides developers with reliable OTP generation capabilities.
+`otp-gen-agent` is a lightweight, flexible Node.js library designed to simplify one-time password (OTP) generation for authentication systems. With mobile number verification becoming the standard authentication mechanism across India and many other regions, this utility provides developers with reliable OTP generation capabilities.
 
 ## Installation
-`npm install otp-gen-agent --save`
+```
+npm install otp-gen-agent --save
+```
 
 ## Core Features
 
+- **TypeScript Support**: Full type declarations included
+- **ESM & CommonJS**: Works with both `import` and `require()`
 - **Simple API**: Generate secure OTPs with minimal code
 - **Customizable**: Control OTP length and character set
 - **Bulk Generation**: Create multiple OTPs in a single operation
-- **Lightweight**: No bloated dependencies
+- **Lightweight**: Minimal dependencies
 - **Promise-based**: Modern async/await support
 - **Webhook Support**: Trigger webhooks for OTP generation events
 
 ## Usage
 
-Mobile number has become the defacto user authentication mechanism in India and hence, OTP generation is a very common phenomena.
-This is a small utility lib to generate OTP.
+### ESM (import)
+
+```js
+import { otpGen, customOtpGen, bulkOtpGen } from 'otp-gen-agent';
+```
+
+### CommonJS (require)
+
+```js
+const { otpGen, customOtpGen, bulkOtpGen } = require('otp-gen-agent');
+```
 
 ### Standard OTP Generation
 
 Generate a standard 6-digit numeric OTP:
 
 ```js
-const { otpGen } = require('otp-gen-agent');
-
 const otp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
-
 ```
-  - Default OTP lenght: 6
-  - Default characters set: 0123456789 (Numeric [0-9])
+  - Default OTP length: 6
+  - Default character set: `0123456789` (Numeric [0-9])
 
 ### Custom OTP Generation
 
 Create OTPs with custom length and character sets:
 
 ```js
-const { customOtpGen } = require('otp-gen-agent');
-
-const otp = await customOtpGen({length: 4, chars: 'abc123'}); // 'a3c1'
-
+const otp = await customOtpGen({ length: 4, chars: 'abc123' }); // 'a3c1'
 ```
 
-**Arguments:** 
+**Arguments:**
   - options: optional
-    - length: custom otp length
-    - chars: custom characters
+    - `length`: custom otp length
+    - `chars`: custom characters
 
 You can customise the OTP length and also the characters to be used for OTP generation.
-  - Default OTP lenght is 6.
-  - Default characters used to generate OTP is 0123456789
+  - Default OTP length is 6.
+  - Default characters used to generate OTP is `0123456789`
 
 ### Bulk OTP Generation
 
 Generate multiple OTPs in a single operation:
 
 ```js
-const { bulkOtpGen } = require('otp-gen-agent');
-
-const otp = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
-
+const otps = await bulkOtpGen(2); // Array of otps: ['344156', '512398']
 ```
 
 ```js
-const { bulkOtpGen } = require('otp-gen-agent');
-
-const otp = await bulkOtpGen(2, {length = 5, chars: 'abcd123'} ); // Array of otps: ['312b3', 'bcddd']
-
+const otps = await bulkOtpGen(2, { length: 5, chars: 'abcd123' }); // Array of otps: ['312b3', 'bcddd']
 ```
 
-**Arguments:** 
-  - num: number of OTPs to be generated in bulk
-  - opts: optional argument
-    - length: custom otp length (default: 6)
-    - chars: custom characters (default: 0123456789)
+**Arguments:**
+  - `count`: count of OTPs to be generated in bulk
+  - `opts`: optional argument
+    - `length`: custom otp length (default: 6)
+    - `chars`: custom characters (default: `0123456789`)
 
 ### When to Use Bulk Generation
 
@@ -108,7 +109,7 @@ The bulk generation feature is particularly useful when:
 The library provides webhook support to track OTP generation events. You can set up a webhook handler to receive notifications when OTPs are generated:
 
 ```js
-const { otpGen, bulkOtpGen, setWebhookHandler, WEBHOOK_EVENTS } = require('otp-gen-agent');
+import { otpGen, bulkOtpGen, setWebhookHandler, WEBHOOK_EVENTS } from 'otp-gen-agent';
 
 // custom webhook handler function
 const webHookHandler = async (event, data) => {
@@ -142,13 +143,47 @@ const bulkOtps = await bulkOtpGen(3); // Triggers OTP_BULK_GENERATED event
 - Type-safe event handling
 - Customizable webhook handler implementation
 
-## Test
+## TypeScript
 
-`npm run test`
+Type declarations are included out of the box. Key types:
 
-## Learn More
+```ts
+interface OtpOptions {
+  length?: number;
+  chars?: string;
+}
 
-For detailed documentation and implementation examples, read our comprehensive guide on [A One Time Password (OTP) generator](https://techinsights.manisuec.com/nodejs/otp-generator-nodejs/)
+interface BulkOtpOptions extends OtpOptions {}
+
+type WebhookEvent = 'otp-generated' | 'bulk-otp-generated';
+
+type WebhookHandler = (event: WebhookEvent, data: Record<string, unknown>) => void | Promise<void>;
+```
+
+## API Reference
+
+| Function | Description |
+|----------|-------------|
+| `otpGen()` | Generate a 6-digit numeric OTP |
+| `customOtpGen(options?)` | Generate OTP with custom length/chars |
+| `bulkOtpGen(count, options?)` | Generate multiple OTPs |
+| `setWebhookHandler(handler)` | Register a webhook handler |
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Typecheck
+npm run typecheck
+
+# Build (outputs dist/index.js + dist/index.cjs)
+npm run build
+
+# Run tests
+npm test
+```
 
 ## License
 
