@@ -3,7 +3,7 @@ name: run test on pr
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
